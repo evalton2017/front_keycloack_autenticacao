@@ -1,0 +1,38 @@
+<h1 class="mt-4">Editar Cliente</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Cadastro Cliente</li>
+</ol>
+ <div class="alert alert-success" role="alert" *ngIf="sucesso">
+    Cliente Salvo Com Sucesso!
+ </div>
+
+ <div class="alert alert-danger" role="alert" *ngFor='let erro of errors'>
+    {{erro}}
+ </div>
+<div class="container">
+    <form [formGroup]="clienteForm">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="codigo">Codigo</label>
+                <input type="text" class="form-control" name="titulo" formControlName="id" placeholder="codigo" [attr.disabled]="true">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="dataCriacao">Data Criação</label>
+                <input type="text" class="form-control" name="dataCriacao" formControlName="dataCriacao" placeholder="data criação" [attr.disabled]="true">
+            </div>
+            <div class="form-group col-md-8">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" name="titulo" formControlName="nome" placeholder="nome">
+                <div class="erro" role="alert" *ngIf="!clienteForm.controls['nome'].valid && clienteForm.controls['nome'].touched" margin-left>Nome não pode ser nullo!!</div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="cpf">CPF</label>
+                <input type="text" class="form-control" name="cpf" formControlName="cpf"  mascara="999.999.999-99" placeholder="999.999.999-99" [attr.disabled]="true">
+                <p  class="erro" *ngIf="!clienteForm.controls['cpf'].valid && clienteForm.controls['cpf'].touched" margin-left>CPF não pode ser nullo!!</p>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" id="atualizar" (click)="atualizarCliente()" [disabled]="!clienteForm.valid"><i class="fas fa-user"></i> ATUALIZAR </button>
+        <button type="submit" class="btn btn-success" id="listar" routerLink="/clientes"> <i class="fas fa-arrow-alt-circle-left"></i> VOLTAR</button>
+    </form>
+</div>
+<br><br>

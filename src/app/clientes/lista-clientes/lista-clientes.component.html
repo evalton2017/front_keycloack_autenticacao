@@ -1,0 +1,60 @@
+<h1 class="mt-4">Clientes</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Clientes Cadastrados</li>
+</ol>
+<div class="alert alert-success" role="alert" *ngIf="sucesso">
+    Cliente Deletado com sucesso!
+ </div>
+
+ <div class="alert alert-danger" role="alert" *ngFor='let erro of errors'>
+    {{erro}}
+ </div>
+
+<button type="submit" class="btn btn-warning" routerLink="form" ><i class="fas fa-plus"></i> CADASTRAR</button>
+<br><br>
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Codigo</th>
+        <th scope="col">Nome</th>
+        <th scope="col">CPF</th>
+        <th scope="col">Data Criação</th>
+        <th scope="col">Opções</th>
+      </tr>
+    </thead>
+    <tbody *ngFor='let cliente of clientes'>
+      <tr>
+        <th scope="row">{{cliente.id}}</th>
+        <td>{{cliente.nome}}</td>
+        <td>{{cliente.cpf | mask:"000.000.000-00"}}</td>
+        <td>{{cliente.dataCadastro}}</td>
+        <td>
+            <button class="btn btn-warning" routerLink="edit/{{cliente.id}}" id="edit"><i class="fas fa-edit"> </i> </button>  
+            <button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" (click)="selecionarCliente(cliente)" > <i class="fas fa-trash"></i> </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="clientes.length===0">Nenhum cliente cadastrado.</div>
+  <br>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Deletar Cliente</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Deseja deletar o cliente {{clienteSelecionado.nome}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="excluirCliente(clienteSelecionado.id)">Excluir</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
