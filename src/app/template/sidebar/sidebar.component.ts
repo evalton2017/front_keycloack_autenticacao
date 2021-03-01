@@ -23,11 +23,11 @@ export class SidebarComponent implements OnInit {
 
   verificaToken(){
     setInterval(() => {
-      console.log(this.keycloack.getKeycloakInstance().idToken);
+      /*console.log(this.keycloack.getKeycloakInstance().idToken);
       console.log(this.keycloack.getKeycloakInstance().authenticated);
       if(this.keycloack.isTokenExpired(300)){
         this.keycloack.getKeycloakInstance().updateToken(30);
-      }
+      }*/
       if(this.keycloack.getKeycloakInstance().authenticated==false){
         console.log('entrou aqui');
         this.keycloack.logout('http://localhost:4200/home');

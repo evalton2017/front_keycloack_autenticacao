@@ -1,0 +1,44 @@
+<h1 class="mt-4">Serviço Prestado</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Servico Prestado</li>
+</ol>
+ <div class="alert alert-success" role="alert" *ngIf="sucesso">
+    Serviço Salvo Com Sucesso!
+ </div>
+
+ <div class="alert alert-danger" role="alert" *ngFor='let erro of errors'>
+    {{erro}}
+ </div>
+<div class="container">
+    <form [formGroup]="servicoPrestadoForm">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="codigo">Codigo</label>
+                <input type="text" class="form-control" name="titulo" formControlName="id" placeholder="codigo" [attr.disabled]="true">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="dataCriacao">Descricao</label>
+                <input type="text" class="form-control" name="descricao" formControlName="descricao" placeholder="descrição do serviço" >
+            </div>
+            <div class="form-group col-md-8">
+                <label for="cliente">Cliente</label>
+                <select class="form-control" id="cliente" formControlName="idCliente" placeholder="Selecione">
+                    <option *ngFor="let cliente of clientes" value="{{cliente.id}}">{{cliente.nome}}</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="preco">Preco</label>
+                <input type="text" class="form-control" name="preco" formControlName="preco"  placeholder="999.99">
+                <p  class="erro" *ngIf="!servicoPrestadoForm.controls['preco'].valid && servicoPrestadoForm.controls['preco'].touched" margin-left>preco não pode ser nullo!!</p>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="data">Data</label>
+                <input type="text" class="form-control" name="data" formControlName="data"  >
+                <p  class="erro" *ngIf="!servicoPrestadoForm.controls['data'].valid && servicoPrestadoForm.controls['data'].touched" margin-left>preco não pode ser nullo!!</p>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="salvarServico()" [disabled]="!servicoPrestadoForm.valid"><i class="fas fa-user"></i> SALVAR </button>
+        <button type="submit" class="btn btn-success" id="listar" routerLink="/servicos-prestados"> <i class="fas fa-arrow-alt-circle-left"></i> VOLTAR</button>
+    </form>
+</div>
+<br><br>

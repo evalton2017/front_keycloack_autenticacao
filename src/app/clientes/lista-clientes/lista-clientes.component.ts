@@ -22,7 +22,7 @@ export class ListaClientesComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
-    private keycloack: KeycloakService
+    private keycloack: KeycloakService,
   ) {
     this.clienteSelecionado = new Cliente();
   }
@@ -38,10 +38,9 @@ export class ListaClientesComponent implements OnInit {
   
   listarClientes(){
     this.clienteService.listarCliente().subscribe((res: any[]) => {
-      console.log(res);
       this.clientes = res;
     }, error => {
-      
+      console.log(error);
     });
   }
 

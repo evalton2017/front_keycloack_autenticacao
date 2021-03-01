@@ -9,14 +9,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { ListaClientesComponent } from './lista-clientes/lista-clientes.component';
 import { IConfig, NgxMaskModule } from 'ngx-mask';
 import { EditaClienteComponent } from './edita-cliente/edita-cliente.component';
+import { PublicComponent } from './public/public.component';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
 };
  
-
 @NgModule({
-  declarations: [FormClientesComponent, ListaClientesComponent, EditaClienteComponent],
+  declarations: [FormClientesComponent, ListaClientesComponent, EditaClienteComponent, PublicComponent],
   imports: [
     CommonModule,
     ClientesRoutingModule,

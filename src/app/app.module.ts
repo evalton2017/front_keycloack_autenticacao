@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { LayoutComponent } from './layout/layout.component';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
 import { initializeKeycloak } from './util/app.init';
+import { ServicoPrestadoModule } from './servico-prestado/servico-prestado.module';
 
 @NgModule({
   declarations: [
@@ -21,11 +22,12 @@ import { initializeKeycloak } from './util/app.init';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     TemplateModule,
     FormsModule,
     ClientesModule,
-    KeycloakAngularModule
+    ServicoPrestadoModule,
+    KeycloakAngularModule,
+    AppRoutingModule
   ],
   providers: [
     {

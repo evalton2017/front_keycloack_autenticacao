@@ -7,11 +7,14 @@ export function initializeKeycloak(keycloak: KeycloakService) {
           url: 'http://localhost:8090/auth',
           realm: 'clientes',
           clientId: 'app-clientes',
+          //http://localhost:4200/public
         },
         initOptions: {
           checkLoginIframe: true,
-          checkLoginIframeInterval: 25
+          checkLoginIframeInterval: 25,
         },
-        loadUserProfileAtStartUp: true
+        loadUserProfileAtStartUp: true,
+        bearerExcludedUrls : ['public'], 
       });
+
   }
